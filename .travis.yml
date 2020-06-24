@@ -8,7 +8,7 @@ git:
 services:
   - docker
 before_install:
-  - git config --global url."https://github.com/".insteadOf git@github.com:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --init --recursive
   - sed -i 's/#INSERT_HERE/COPY . \/mod_event_redis/g' .devcontainer/Dockerfile
   - cat .devcontainer/Dockerfile
